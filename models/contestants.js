@@ -13,7 +13,8 @@ const contestantSchema=new mongoose.Schema({
         contentType: String,
         // required:true
     },
-    nominated:{
+    //role ===> nominated
+    role:{
         type:Number,
         default:0
     }

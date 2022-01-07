@@ -24,8 +24,10 @@ mongoose
   });
 
 const otpRoutes=require("./routes/otp")
+const contestantRoutes=require("./routes/contestants")
 
 
+app.use("/api",contestantRoutes);
 app.use("/api",otpRoutes);
 app.listen(process.env.PORT,()=>{
     console.log(`app is running at ${5000}`)

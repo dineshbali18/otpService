@@ -64,10 +64,10 @@ exports.sendOtp=(req,res)=>{
           console.log(error);
         } else {
           console.log('Email sent: ' + info.response);
-          res.json(info.responce)
+          // res.json(info.responce)
         }
       });
-      // res.json("otp sent")
+      res.json("otp sent")
     }
     else{
         res.json("otp expired")

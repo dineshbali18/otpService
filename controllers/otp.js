@@ -60,6 +60,7 @@ exports.sendOtp=(req,res)=>{
       };
       
       transporter.sendMail(mailOptions, function(error, info){
+          res.json("hihi")
         if (error) {
           console.log(error);
         } else {

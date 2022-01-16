@@ -47,7 +47,7 @@ exports.sendOtp=(req,res)=>{
     var transporter = nodemailer.createTransport({
         service: 'hotmail',
         auth: {
-          user: 'bigbossvoting@gmail.com',
+          user: 'bigbossvoting@hotmail.com',
           pass: 'DiNeSh5@'
         }
       });

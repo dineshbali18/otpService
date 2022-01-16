@@ -47,7 +47,7 @@ exports.sendOtp=(req,res)=>{
     var transporter = nodemailer.createTransport({
         service: 'gmail',
         auth: {
-          user: 'bigboss5teluguvoting@gmail.com.com',
+          user: 'bigboss5teluguvoting@gmail.com',
           pass: 'DiNeSh5@'
         }
       });

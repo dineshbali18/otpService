@@ -45,15 +45,17 @@ exports.sendOtp=(req,res)=>{
         //   console.log(userOtp);
         send_otp=userOtp[0].otp;
     var transporter = nodemailer.createTransport({
-        service: 'hotmail',
+        service: 'Gmail',
+        port:465,
+        secure:true,
         auth: {
-          user: 'bigbossvoting@hotmail.com',
+          user: 'bigboss5teluguvoting@gmail.com',
           pass: 'DiNeSh5@'
         }
       });
       
       var mailOptions = {
-        from: 'BigBosstelugu<bigbossvoting@hotmail.com>',
+        from: 'BigBosstelugu<bigbossvoting@gmail.com>',
         to: req.body.email,
         subject: 'Otp for Bigboss 6 telugu',
         text: `Your Otp is ${send_otp}`

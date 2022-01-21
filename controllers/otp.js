@@ -94,7 +94,9 @@ exports.verifyOtp=(req,res)=>{
         }
         if(req.body.email.otp==cate[0].otp){
           console.log("sucess");
-            return res.send("sucess")
+            return res.json({
+                sucess:"Otp Verified"
+            })
         }
         else{
             return res.status(400).json({

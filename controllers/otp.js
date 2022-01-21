@@ -4,9 +4,9 @@ const otp=require("../models/otp")
 var nodemailer = require('nodemailer');
 
 
-exports.generateOtp=async(req,res)=>{
+exports.generateOtp=(req,res)=>{
     var otp1=Math.floor(100000 + Math.random() * 900000);
-    await otp.find({email:req.body.email}).exec((err,otp1)=>{
+    otp.find({email:req.body.email}).exec((err,otp1)=>{
         if(err){
             error:"Invalid Request"
         }

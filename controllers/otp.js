@@ -6,20 +6,16 @@ var nodemailer = require('nodemailer');
 
 exports.generateOtp=(req,res)=>{
     var otp1=Math.floor(100000 + Math.random() * 900000);
-    
     otp.find({email:req.body.email}).exec((err,otp1)=>{
         if(err){
-            return res.status(400).json({
-        error: "Invalid Request"
-      });
+            error:"Invalid Request"
         }
-        console.log(otp1);
-        if(otp1.length>=0){
+        if(otp1.length>0){
         res.end();
-        }
-        
     }
-        const otpData = new otp({
+    })
+
+    const otpData = new otp({
         otp:otp1,
         email:req.body.email
     });
@@ -30,8 +26,7 @@ exports.generateOtp=(req,res)=>{
       });
     }
   });
-    })
-  res.json("otpData")
+  res.json(otpData)
 }
 
 exports.sendOtp=(req,res)=>{

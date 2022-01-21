@@ -10,17 +10,16 @@ exports.generateOtp=(req,res)=>{
         if(err){
             error:"Invalid Request"
         }
-//         if(otp1.length>0){
-//             return res.json("otp already sent");
-//         otp.deleteOne({user:req.body.email}).exec((err)=>{
-//             if(err){
-//                 error:"unable to perform del operation"
-//             }
-//         })
-//     }
-        
-        if(otp1.length<0){
-        const otpData = new otp({
+        if(otp1.length>0){
+        otp.deleteOne({user:req.body.email}).exec((err)=>{
+            if(err){
+                error:"unable to perform del operation"
+            }
+        })
+    }
+    })
+
+    const otpData = new otp({
         otp:otp1,
         email:req.body.email
     });
@@ -31,14 +30,7 @@ exports.generateOtp=(req,res)=>{
       });
     }
   });
-        
-        }
-        
-        
-    })
-    res.json("otpSent")
-
-//   res.json(otpData)
+  res.json(otpData)
 }
 
 exports.sendOtp=(req,res)=>{

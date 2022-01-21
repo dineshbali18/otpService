@@ -85,12 +85,13 @@ exports.verifyOtp=(req,res)=>{
                 error: "INVALID OTP"
             })
         }
+        console.log(cate);
+        console.log(cate[0]);
         if(cate==null||cate.length==0){
           return res.status(400).json({
                 error: "OTP EXPIRED..."
             })
         }
-        console.log(cate[0]);
         if(req.body.email.otp==cate[0].otp){
           console.log("sucess");
             return res.send("sucess")

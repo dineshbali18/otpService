@@ -9,7 +9,9 @@ exports.generateOtp=(req,res)=>{
     
     otp.find({email:req.body.email}).exec((err,otp1)=>{
         if(err){
-            error:"Invalid Request"
+            return res.status(400).json({
+        error: "Invalid Request"
+      });
         }
         if(otp1.length==0){
 //         otp.updateOne({user:req.body.email},{otp:otp1}).exec((err)=>{
@@ -39,7 +41,9 @@ exports.sendOtp=(req,res)=>{
     var send_otp;
     otp.find({email:req.body.email}).exec((err,userOtp)=>{
         if(err){
-            error:"Invalid"
+            return res.status(400).json({
+        error: "Invalid req send otp"
+      });
         }
         if(userOtp.length>0){
         //   console.log(userOtp);

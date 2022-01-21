@@ -6,18 +6,6 @@ var nodemailer = require('nodemailer');
 
 exports.generateOtp=(req,res)=>{
     var otp1=Math.floor(100000 + Math.random() * 900000);
-    otp.find({email:req.body.email}).exec((err,otp1)=>{
-        if(err){
-            error:"Invalid Request"
-        }
-        if(otp1.length>0){
-        otp.deleteOne({user:req.body.email}).exec((err)=>{
-            if(err){
-                error:"unable to perform del operation"
-            }
-        })
-    }
-    })
 
     const otpData = new otp({
         otp:otp1,

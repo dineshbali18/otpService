@@ -9,6 +9,6 @@ const otpSchema=new mongoose.Schema({
     }
 },{timestamps:true})
 
-otpSchema.ensureIndex({ createdAt: 1 }, { expireAfterSeconds: 300 })
+// otpSchema.ensureIndex({ createdAt: 1 }, { expireAfterSeconds: 300 })
 
 module.exports=mongoose.model("otp",otpSchema);

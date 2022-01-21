@@ -33,7 +33,7 @@ exports.generateOtp=(req,res)=>{
   });
     }
     })
-  res.json(otpData)
+  res.json("otpData")
 }
 
 exports.sendOtp=(req,res)=>{

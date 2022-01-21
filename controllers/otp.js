@@ -12,12 +12,11 @@ exports.generateOtp=(req,res)=>{
             error:"Invalid Request"
         }
         if(otp1.length>0){
-//         otp.deleteOne({user:req.body.email}).exec((err)=>{
-//             if(err){
-//                 error:"unable to perform del operation"
-//             }
-//         })
-            return res.json("otp already exists");
+        otp.updateOne({user:req.body.email},{otp:otp1}).exec((err)=>{
+            if(err){
+                error:"unable to perform del operation"
+            }
+        })
     }
     })
 

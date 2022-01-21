@@ -36,6 +36,7 @@ exports.generateOtp=async(req,res)=>{
         
         
     })
+    res.json("otpSent")
 
 //   res.json(otpData)
 }

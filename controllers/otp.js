@@ -11,11 +11,12 @@ exports.generateOtp=async(req,res)=>{
             error:"Invalid Request"
         }
         if(otp1.length>0){
-        otp.deleteOne({user:req.body.email}).exec((err)=>{
-            if(err){
-                error:"unable to perform del operation"
-            }
-        })
+            return res.json("otp already sent");
+//         otp.deleteOne({user:req.body.email}).exec((err)=>{
+//             if(err){
+//                 error:"unable to perform del operation"
+//             }
+//         })
     }
     })
 

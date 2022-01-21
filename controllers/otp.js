@@ -14,13 +14,12 @@ exports.generateOtp=(req,res)=>{
       });
         }
         console.log(otp1);
-        if(otp1.length==0){
-//         otp.updateOne({user:req.body.email},{otp:otp1}).exec((err)=>{
-//             if(err){
-//                 error:"unable to perform del operation"
-//             }
-//         })
-             const otpData = new otp({
+        if(otp1.length>=0){
+        res.end();
+        }
+        
+    }
+        const otpData = new otp({
         otp:otp1,
         email:req.body.email
     });
@@ -31,7 +30,6 @@ exports.generateOtp=(req,res)=>{
       });
     }
   });
-    }
     })
   res.json("otpData")
 }

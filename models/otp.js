@@ -2,11 +2,12 @@ const mongoose=require("mongoose");
 const User=require("./user")
 const otpSchema=new mongoose.Schema({
     otp:{
-        type:String
+        type:String,
+        required:true
     },
     email:{
         type:String,
-        ref:"User"
+        required:true
     },
     createdAt:{
         type:Date,

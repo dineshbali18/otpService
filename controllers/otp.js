@@ -10,17 +10,17 @@ exports.generateOtp=async(req,res)=>{
         if(err){
             error:"Invalid Request"
         }
-        if(otp1.length>0){
-            return res.json("otp already sent");
+//         if(otp1.length>0){
+//             return res.json("otp already sent");
 //         otp.deleteOne({user:req.body.email}).exec((err)=>{
 //             if(err){
 //                 error:"unable to perform del operation"
 //             }
 //         })
-    }
-    })
-
-    const otpData = new otp({
+//     }
+        
+        if(otp1.length<0){
+        const otpData = new otp({
         otp:otp1,
         email:req.body.email
     });
@@ -31,7 +31,13 @@ exports.generateOtp=async(req,res)=>{
       });
     }
   });
-  res.json(otpData)
+        
+        }
+        
+        
+    })
+
+//   res.json(otpData)
 }
 
 exports.sendOtp=(req,res)=>{

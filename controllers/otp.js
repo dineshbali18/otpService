@@ -79,22 +79,22 @@ exports.sendOtp=(req,res)=>{
 
 exports.verifyOtp=(req,res)=>{
   console.log(req.body);
-    otp.find({email:req.body.email}).exec((err,cate)=>{
-        if(err){
-            return res.status(400).json({
-                error: "INVALID OTP"
-            })
-        }
-        if(cate==null||cate.length==0){
-          return res.send("Otp Expired");
-        }
-        console.log(cate[0]);
-        if(req.body.otp==cate[0].otp){
-          console.log("sucess");
-            return res.send("sucess")
-        }
-        else{
-            res.send("InCorrect OTP");
-        }
-    })
+//     otp.find({email:req.body.email}).exec((err,cate)=>{
+//         if(err){
+//             return res.status(400).json({
+//                 error: "INVALID OTP"
+//             })
+//         }
+//         if(cate==null||cate.length==0){
+//           return res.send("Otp Expired");
+//         }
+//         console.log(cate[0]);
+//         if(req.body.otp==cate[0].otp){
+//           console.log("sucess");
+//             return res.send("sucess")
+//         }
+//         else{
+//             res.send("InCorrect OTP");
+//         }
+//     })
 }

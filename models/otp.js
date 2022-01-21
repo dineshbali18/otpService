@@ -1,14 +1,19 @@
 const mongoose=require("mongoose");
+const User=require("./user")
 const otpSchema=new mongoose.Schema({
     otp:{
         type:String
     },
     email:{
         type:String,
-        required:true
+        ref:"User"
+    },
+    createdAt:{
+        type:Date,
+        expires:'350ms',
+        default:Date.now
     }
-},{timestamps:true})
 
-// otpSchema.ensureIndex({ createdAt: 1 }, { expireAfterSeconds: 300 })
+})
 
 module.exports=mongoose.model("otp",otpSchema);

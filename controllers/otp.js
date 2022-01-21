@@ -13,6 +13,7 @@ exports.generateOtp=(req,res)=>{
         error: "Invalid Request"
       });
         }
+        console.log(otp1);
         if(otp1.length==0){
 //         otp.updateOne({user:req.body.email},{otp:otp1}).exec((err)=>{
 //             if(err){

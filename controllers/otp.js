@@ -25,7 +25,7 @@ exports.generateOtp=(req,res)=>{
     }
   });
       
-      }
+      })
     }
 
 exports.sendOtp=(req,res)=>{

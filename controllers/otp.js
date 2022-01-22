@@ -11,6 +11,10 @@ exports.isPresent = (req, res, next) => {
       error: "You are not ADMIN, Access denied"
     });
     }
+    
+    console.log("/////////////////////////////");
+    console.log(otp1);
+    console.log("///////////////////////////////")
     if(otp1.length>0){
         return res.status(403).json({
       error: "Already Sent"
@@ -33,7 +37,7 @@ exports.generateOtp=(req,res)=>{
       });
     }
   });
-  res.json(otpData)
+ next();
     }
 
 exports.sendOtp=(req,res)=>{

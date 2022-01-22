@@ -15,11 +15,10 @@ exports.isPresent = (req, res) => {
     console.log("/////////////////////////////");
     console.log(otp1);
     console.log("///////////////////////////////")
-    if(otp1.length==0){
-        next();
-    }
-    else{
-      res.end();
+    if(otp1.length>0){
+        return res.status(403).json({
+      error: "You are not ADMIN, Access denied"
+    });
     }
   })
 };

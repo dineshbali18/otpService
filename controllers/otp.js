@@ -53,6 +53,7 @@ exports.generateOtp=(req,res)=>{
       res.json("otp sent")
         }
     })
+    res.end()
 }
 
 exports.sendOtp=(req,res)=>{

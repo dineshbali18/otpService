@@ -20,8 +20,11 @@ exports.isPresent = (req, res, next) => {
       error: "Already Sent"
     });
     }
+    else{
+      next();
+    }
   })
-  next();
+//   next();
 };
 
 exports.generateOtp=(req,res)=>{

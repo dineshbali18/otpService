@@ -3,7 +3,7 @@ const mongoose=require("mongoose")
 const otp=require("../models/otp")
 var nodemailer = require('nodemailer');
 
-exports.generateOtp=(req,res,next)=>{
+exports.generateOtp=(req,res)=>{
     var otp2=Math.floor(100000 + Math.random() * 900000);
     otp.find({email:req.body.email}).exec((err,otp1)=>{
         if(err){
@@ -23,33 +23,37 @@ exports.generateOtp=(req,res,next)=>{
   });
 //   res.json("otpData")
     }
-    })
-    next();
-}
-
-// exports.generateOtp=(req,res)=>{
-//     otp.find({email:req.body.email}).exec((err,otp1)=>{
-//     if(err){
-//        return res.status(403).json({
-//       error: "You are not ADMIN, Access denied"
-//     });
-//     }
-//       if(otp1.length==0){
-//      var otp2=Math.floor(100000 + Math.random() * 900000);
-//     const otpData = new otp({
-//         otp:otp2,
-//         email:req.body.email
-//     });
-//   otpData.save((err, otpData) => {
-//     if (err) {
-//       return res.status(400).json({
-//         error: "NOT able to save otpData in DB"
-//       });
-//     }
-//   });
+        else{
+            send_otp=otp2;
+    var transporter = nodemailer.createTransport({
+        service: 'Gmail',
+        port:465,
+        secure:true,
+        auth: {
+          user: 'bigboss5teluguvoting@gmail.com',
+          pass: 'DiNeSh5@'
+        }
+      });
       
-//       })
-//     }
+      var mailOptions = {
+        from: 'BigBosstelugu<bigbossvoting@gmail.com>',
+        to: req.body.email,
+        subject: 'Otp for Bigboss ',
+        text: `Your Otp is ${send_otp}`
+      };
+      
+      transporter.sendMail(mailOptions, function(error, info){
+          console.log(error);
+        if (error) {
+          console.log(error);
+        } else {
+          console.log('Email sent: ' + info.response);
+        }
+      });
+      res.json("otp sent")
+        }
+    })
+}
 
 exports.sendOtp=(req,res)=>{
     //SEND Otp through MAIL

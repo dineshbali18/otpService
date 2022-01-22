@@ -3,13 +3,13 @@ const mongoose=require("mongoose")
 const otp=require("../models/otp")
 var nodemailer = require('nodemailer');
 
-exports.generateOtp=(req,res)=>{
+exports.generateOtp=(req,res,next)=>{
     var otp2=Math.floor(100000 + Math.random() * 900000);
     otp.find({email:req.body.email}).exec((err,otp1)=>{
         if(err){
             error:"Invalid Request"
         }
-        if(otp1.length>0){
+        if(otp1.length==0){
         const otpData = new otp({
         otp:otp2,
         email:req.body.email
@@ -21,9 +21,10 @@ exports.generateOtp=(req,res)=>{
       });
     }
   });
-  res.json("otpData")
+//   res.json("otpData")
     }
     })
+    next();
 }
 
 // exports.generateOtp=(req,res)=>{

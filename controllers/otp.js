@@ -9,6 +9,9 @@ exports.generateOtp=(req,res)=>{
         if(err){
             error:"Invalid Request"
         }
+        console.log("##########################")
+            console.log(otp1);
+            console.log("##########################")
         if(otp1.length==0){
         const otpData = new otp({
         otp:otp2,
@@ -25,6 +28,7 @@ exports.generateOtp=(req,res)=>{
     }
         else{
             console.log("************************")
+            console.log(otp1);
             send_otp=otp1[0].otp;
             console.log("*********************")
     var transporter = nodemailer.createTransport({

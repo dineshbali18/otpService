@@ -2,9 +2,9 @@ const express=require("express");
 const router=express.Router();
 
 
-const {generateOtp,verifyOtp,sendOtp}=require('../controllers/otp');
+const {generateOtp,verifyOtp,sendOtp,isPresent}=require('../controllers/otp');
 
-router.post("/user/generateotp",generateOtp)
+router.post("/user/generateotp",isPresent,generateOtp)
 router.post("/user/sendotp",sendOtp);
 router.post("/user/verifyotp",verifyOtp);
 

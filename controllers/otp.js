@@ -4,29 +4,17 @@ const otp=require("../models/otp")
 var nodemailer = require('nodemailer');
 
 
-exports.isPresent = (req, res) => {
-  otp.find({email:req.body.email}).exec((err,otp1)=>{
+exports.generateOtp=(req,res)=>{
+    otp.find({email:req.body.email}).exec((err,otp1)=>{
     if(err){
        return res.status(403).json({
       error: "You are not ADMIN, Access denied"
     });
     }
-    
-    console.log("/////////////////////////////");
-    console.log(otp1);
-    console.log("///////////////////////////////")
-    if(otp1.length>0){
-        return res.status(403).json({
-      error: "You are not ADMIN, Access denied"
-    });
-    }
-  })
-};
-
-exports.generateOtp=(req,res)=>{
-    var otp1=Math.floor(100000 + Math.random() * 900000);
+      if(otp1.length==0){
+     var otp2=Math.floor(100000 + Math.random() * 900000);
     const otpData = new otp({
-        otp:otp1,
+        otp:otp2,
         email:req.body.email
     });
   otpData.save((err, otpData) => {
@@ -36,6 +24,8 @@ exports.generateOtp=(req,res)=>{
       });
     }
   });
+      
+      }
     }
 
 exports.sendOtp=(req,res)=>{

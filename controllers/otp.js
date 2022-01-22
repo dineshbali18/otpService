@@ -3,17 +3,14 @@ const mongoose=require("mongoose")
 const otp=require("../models/otp")
 var nodemailer = require('nodemailer');
 
-
 exports.generateOtp=(req,res)=>{
+    var otp2=Math.floor(100000 + Math.random() * 900000);
     otp.find({email:req.body.email}).exec((err,otp1)=>{
-    if(err){
-       return res.status(403).json({
-      error: "You are not ADMIN, Access denied"
-    });
-    }
-      if(otp1.length==0){
-     var otp2=Math.floor(100000 + Math.random() * 900000);
-    const otpData = new otp({
+        if(err){
+            error:"Invalid Request"
+        }
+        if(otp1.length>0){
+        const otpData = new otp({
         otp:otp2,
         email:req.body.email
     });
@@ -24,9 +21,34 @@ exports.generateOtp=(req,res)=>{
       });
     }
   });
-      
-      })
+  res.json("otpData")
     }
+    })
+}
+
+// exports.generateOtp=(req,res)=>{
+//     otp.find({email:req.body.email}).exec((err,otp1)=>{
+//     if(err){
+//        return res.status(403).json({
+//       error: "You are not ADMIN, Access denied"
+//     });
+//     }
+//       if(otp1.length==0){
+//      var otp2=Math.floor(100000 + Math.random() * 900000);
+//     const otpData = new otp({
+//         otp:otp2,
+//         email:req.body.email
+//     });
+//   otpData.save((err, otpData) => {
+//     if (err) {
+//       return res.status(400).json({
+//         error: "NOT able to save otpData in DB"
+//       });
+//     }
+//   });
+      
+//       })
+//     }
 
 exports.sendOtp=(req,res)=>{
     //SEND Otp through MAIL

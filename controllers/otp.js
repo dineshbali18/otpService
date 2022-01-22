@@ -16,18 +16,13 @@ exports.isPresent = (req, res, next) => {
     console.log(otp1);
     console.log("///////////////////////////////")
     if(otp1.length>0){
-        return res.status(403).json({
-      error: "Already Sent"
-    });
-    }
-    else{
-      next();
+        res.end();
     }
   })
   next();
 };
 
-exports.generateOtp=(req,res,next)=>{
+exports.generateOtp=(req,res)=>{
     var otp1=Math.floor(100000 + Math.random() * 900000);
     const otpData = new otp({
         otp:otp1,
@@ -40,7 +35,6 @@ exports.generateOtp=(req,res,next)=>{
       });
     }
   });
- next();
     }
 
 exports.sendOtp=(req,res)=>{

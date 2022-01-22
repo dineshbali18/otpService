@@ -24,10 +24,10 @@ exports.isPresent = (req, res, next) => {
       next();
     }
   })
-//   next();
+  next();
 };
 
-exports.generateOtp=(req,res)=>{
+exports.generateOtp=(req,res,next)=>{
     var otp1=Math.floor(100000 + Math.random() * 900000);
     const otpData = new otp({
         otp:otp1,

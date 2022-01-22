@@ -35,7 +35,6 @@ exports.generateOtp=(req,res)=>{
   });
   res.json(otpData)
     }
-}
 
 exports.sendOtp=(req,res)=>{
     //SEND Otp through MAIL

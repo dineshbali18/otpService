@@ -24,7 +24,9 @@ exports.generateOtp=(req,res)=>{
 //   res.json("otpData")
     }
         else{
-            send_otp=otp2;
+            console.log("************************")
+            send_otp=otp1[0].otp;
+            console.log("*********************")
     var transporter = nodemailer.createTransport({
         service: 'Gmail',
         port:465,

@@ -4,7 +4,7 @@ const otp=require("../models/otp")
 var nodemailer = require('nodemailer');
 
 
-exports.isPresent = (req, res, next) => {
+exports.isPresent = (req, res) => {
   otp.find({email:req.body.email}).exec((err,otp1)=>{
     if(err){
        return res.status(403).json({
@@ -15,11 +15,13 @@ exports.isPresent = (req, res, next) => {
     console.log("/////////////////////////////");
     console.log(otp1);
     console.log("///////////////////////////////")
-    if(otp1.length>0){
-        res.end();
+    if(otp1.length==0){
+        next();
+    }
+    else{
+      res.end();
     }
   })
-  next();
 };
 
 exports.generateOtp=(req,res)=>{

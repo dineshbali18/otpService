@@ -25,10 +25,14 @@ mongoose
 
 const otpRoutes=require("./routes/otp")
 const contestantRoutes=require("./routes/contestants")
+const reports = require('./routes/reports')
 
 
 app.use("/api",contestantRoutes);
 app.use("/api",otpRoutes);
+app.use("/api",reports)
+
+
 app.listen(process.env.PORT,()=>{
-    console.log(`app is running at ${5000}`)
+    console.log(`app is running at ${process.env.PORT}`)
 })

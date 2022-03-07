@@ -1,13 +1,13 @@
 const mongoose=require('mongoose')
 
 const reportSchema=mongoose.Schema({
-    id:{
+    userId:{
         type:String
     },
-    name:{
+    author:{
         type:String
     },
-    message:{
+    msg:{
         type:String
     }
 })
